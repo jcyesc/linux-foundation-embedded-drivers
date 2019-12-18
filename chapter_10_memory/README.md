@@ -1,8 +1,12 @@
 
 # Memory management
 
+It contains 2 modules and an application that test how much memory can get
+request using:
 
-
+- get_free_pages()
+- kmalloc()
+- vmalloc()
 
 ```shell
 make
