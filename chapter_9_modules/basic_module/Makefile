@@ -7,7 +7,7 @@
 obj-m += basic_module.o
 
 
-KERNEL_DIR ?= /lib/modules/4.15.0-72-generic/build
+KERNEL_DIR ?= /lib/modules/$(shell uname -r)/build
 
 all:
 	make -C $(KERNEL_DIR) \
