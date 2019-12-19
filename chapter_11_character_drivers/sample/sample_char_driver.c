@@ -10,6 +10,9 @@
  * 	ls -la /dev/sample_char_driver
  * 	sudo mknod -m 666 /dev/sample_char_driver c 500 20
  * 	ls -la /dev/sample_char_driver
+ * 	echo 'This is a sentence' > /dev/sample_char_driver
+ *  echo 'Second sentence' > /dev/sample_char_driver
+ *  more /dev/sample_char_driver
  * 	sudo rmmod sample_char_driver
  * 	sudo rm /dev/sample_char_driver
  *
@@ -53,6 +56,7 @@ mycdrv_read(struct file *file, char __user *buf, size_t lbuf, loff_t *ppos)
 {
 	int nbytes;
 
+	pr_info("\nReading function, initial pos=%d\n", (int)*ppos);
 	if ((lbuf + *ppos) > ramdisk_size) {
 		pr_info("trying to read past end of device,"
 			"aborting because this is just a stub!\n");
@@ -60,7 +64,7 @@ mycdrv_read(struct file *file, char __user *buf, size_t lbuf, loff_t *ppos)
 	}
 	nbytes = lbuf - copy_to_user(buf, ramdisk + *ppos, lbuf);
 	*ppos += nbytes;
-	pr_info("\n READING function, nbytes=%d, pos=%d\n", nbytes, (int)*ppos);
+	pr_info("\nREADING function, nbytes=%d, pos=%d\n", nbytes, (int)*ppos);
 	return nbytes;
 }
 
@@ -70,6 +74,7 @@ mycdrv_write(struct file *file, const char __user *buf, size_t lbuf,
 {
 	int nbytes;
 
+	pr_info("\nWRITING function, initial pos=%d\n", (int)*ppos);
 	if ((lbuf + *ppos) > ramdisk_size) {
 		pr_info("trying to write past end of device,"
 			"aborting because this is just a stub!\n");
@@ -77,7 +82,7 @@ mycdrv_write(struct file *file, const char __user *buf, size_t lbuf,
 	}
 	nbytes = lbuf - copy_from_user(ramdisk + *ppos, buf, lbuf);
 	*ppos += nbytes;
-	pr_info("\n WRITING function, nbytes=%d, pos=%d\n", nbytes, (int)*ppos);
+	pr_info("\nWRITING function, nbytes=%d, pos=%d\n", nbytes, (int)*ppos);
 	return nbytes;
 }
 
