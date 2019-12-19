@@ -15,7 +15,7 @@
 /*
  * Improving the Basic Character Driver
  *
- * Starting from sample_driver.c, extend it to:
+ * Starting from sample/sample_driver.c, extend it to:
  *
  * Keep track of the number of times it has been opened since loading,
  * and print out the counter every time the device is opened.
