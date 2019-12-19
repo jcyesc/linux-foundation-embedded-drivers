@@ -25,7 +25,7 @@
 int main(int argc, char **argv)
 {
 	int length, fd1, fd2, rc;
-	char *nodename = "/dev/improve_sample_char_driver";
+	char *nodename = "/dev/memory_allocation_driver";
 	char message[] = " *** TESTING CHAR/DRIVER ***\n";
 
 	length = sizeof(message);
