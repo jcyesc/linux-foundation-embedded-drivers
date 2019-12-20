@@ -25,7 +25,7 @@
 #include <linux/miscdevice.h>
 #include <linux/oom.h>
 
-#define MYDEV_NAME "mycdrv"
+#define MYDEV_NAME "basic_dma"
 
 static struct device *my_dev;
 static char *ramdisk;
