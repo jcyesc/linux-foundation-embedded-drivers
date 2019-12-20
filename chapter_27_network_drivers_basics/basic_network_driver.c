@@ -28,6 +28,7 @@
  *   $  sudo ifconfig mynet0 up 192.168.3.197
  *   $  sudo ifconfig mynet0
  *   $  sudo ifconfig mynet0 down
+ *   $  ping -I mynet0 localhost
  *   $  sudo rmmod basic_network_driver
  *
  *   or
